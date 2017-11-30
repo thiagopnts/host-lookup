@@ -2,6 +2,8 @@
   "name": "host-lookup",
   "version": "1.0.0",
   "description": "Look up host for multiple ips",
+  "engineStrict": true,
+  "engines": { "node": ">=8.0.0" },
   "main": "index.js",
   "scripts": {
     "test": "mocha"
