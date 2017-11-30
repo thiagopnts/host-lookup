@@ -19,4 +19,20 @@ describe('host lookup', () => {
     ips = await lookup(['127.0.0.1']);
     assert.ok(ips.includes('127.0.0.1'));
   });
+
+  it('throws when passing URLs', async () => {
+    try {
+      let ips = await lookup(['http://google.com', 'https://facebook.com']);
+      assert.fail();
+    } catch(err) {
+      assert.equal(err.message, 'invalid host');
+    }
+
+    try {
+      let ips = await lookup('https://google.com');
+      assert.fail();
+    } catch(err) {
+      assert.equal(err.message, 'invalid host');
+    }
+  });
 });

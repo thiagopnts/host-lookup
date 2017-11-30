@@ -5,12 +5,12 @@ const { promisify } = require('util');
 const { flatten } = require('lodash');
 const plookup = promisify(dns.lookup);
 
-
 async function getIPs(host='') {
-  // extracts hostname from hostname:port where the host can be an IP
+  // deletes the port from hostname:port if present
   // url.parse() doesnt work here because it always expects a protocol in the URL
-  let hostname = host.match(/([a-z]+|(\d+|\.?)+):?(\d+)?/i)[1];
-  if (isIP(hostname)) {
+  if (host.match(/^.*:\/\//)) throw new Error('invalid host');
+  let hostname = host.replace(/:\d+/i, '');
+	if (isIP(hostname)) {
     return hostname;
   }
   const results = await plookup(hostname, { all: true });
