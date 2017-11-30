@@ -1,0 +1,22 @@
+{
+  "name": "host-lookup",
+  "version": "1.0.0",
+  "description": "Look up host for multiple ips",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "host",
+    "lookup"
+  ],
+  "author": "Thiago Pontes <npm@thiago.me>",
+  "license": "MIT",
+  "dependencies": {
+    "is-ip": "^2.0.0",
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "mocha": "^4.0.1"
+  }
+}
